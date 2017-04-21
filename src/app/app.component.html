@@ -1,4 +1,17 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<md-sidenav-container>
+    <md-sidenav #sidenav>
+        <md-menu #appMenu="mdMenu">
+            <button md-menu-item [routerLink]="['/home']"> Home </button>
+            <button md-menu-item [routerLink]="['/graph']"> Graph </button>
+        </md-menu>
+    </md-sidenav>
+    <button md-icon-button [mdMenuTriggerFor]="appMenu">
+        <md-icon>more_vert</md-icon>
+    </button> {{title}}
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <router-outlet></router-outlet>
+    </div>
+    <footer>
+        <router-outlet name="footer"></router-outlet>
+    </footer>
+</md-sidenav-container>
