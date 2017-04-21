@@ -1,0 +1,11 @@
+<p>
+  Lämpötiloja!
+</p>
+
+<ul class="temperatures">
+  <li *ngFor="let temperature of temperatures">
+    <b>{{temperature.timestamp}}</b> {{temperature.temperature}}°C
+  </li>
+
+
+</ul>
