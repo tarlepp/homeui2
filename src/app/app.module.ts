@@ -12,7 +12,8 @@ import 'hammerjs';
 
 import { GraphComponent } from './components/graph/graph.component';
 import { HomeComponent } from './components/home/home.component';
-import { TemperatureService } from './service/temperature.service';
+import { TemperatureService } from './services/temperature.service';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TemperatureService } from './service/temperature.service';
     HttpModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [
     TemperatureService

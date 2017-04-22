@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Temperature } from '../temperature';
+import { Temperature } from '../models/temperature';
 import { TEMPERATURES } from '../mock-temperatures';
 
 @Injectable()

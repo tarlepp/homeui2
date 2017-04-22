@@ -2,8 +2,13 @@
   Lämpötiloja!
 </p>
 
-<ul class="temperatures">
-  <li *ngFor="let temperature of temperatures">
-    <strong>{{temperature.timestamp}}</strong> {{temperature.temperature}}°C
-  </li>
-</ul>
+<div class="col-md-6">
+
+  <canvas baseChart
+          [data]="lineChartData.data"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

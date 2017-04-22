@@ -1,7 +1,7 @@
 /**
  * Created by jukka on 21/04/2017.
  */
-import { Temperature } from './temperature';
+import { Temperature } from './models/temperature';
 
 export const TEMPERATURES: Temperature[] = [
   {timestamp: 12340, temperature: -1.1},
