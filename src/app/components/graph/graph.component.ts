@@ -1,46 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Temperature } from '../../models/temperature';
 import { TemperatureService } from '../../services/temperature.service';
-import {timestamp} from "rxjs/operator/timestamp";
+import { timestamp } from "rxjs/operator/timestamp";
 
 @Component({
-    selector: 'app-graph',
-    templateUrl: './graph.component.html',
-    styleUrls: ['./graph.component.scss']
+  selector: 'app-graph',
+  templateUrl: './graph.component.html',
+  styleUrls: ['./graph.component.scss']
 })
 
 export class GraphComponent implements OnInit {
-    public temperatures: Temperature[];
+  public temperatures: Temperature[];
+  public lineChartData: Array<Array<number>>;
+  public lineChartLabels: Array<string>;
+  public lineChartType: string = 'line';
+  public loaded = false;
 
-    private datasets;
-    private labels;
-    private options;
-    public lineChartType = 'line';
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
 
-    public lineChartData;
-    public lineChartLabels;
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 
+  public constructor(private temperatureService: TemperatureService) { }
 
-    public chartClicked(e: any): void {
-        console.log(e);
-    }
+  public ngOnInit(): void {
+    this.temperatureService
+      .getTemperatures()
+      .then(temperatures => {
+        this.temperatures = temperatures;
 
-    public chartHovered(e: any): void {
-        console.log(e);
-    }
+        this.lineChartData = [temperatures.map(temp => temp.temperature)];
+        this.lineChartLabels = temperatures.map(temp => temp.timestamp.toString());
 
-    public constructor(private temperatureService: TemperatureService) { }
-
-    public ngOnInit(): void {
-        this.temperatureService
-            .getTemperatures()
-            .then(temperatures => {
-                this.temperatures = temperatures;
-
-                this.lineChartData = [temperatures.map(temp => temp.temperature)];
-                this.lineChartLabels = [temperatures.map(temp => temp.timestamp)];
-                console.log(this.temperatures, this.lineChartData, this.lineChartLabels);
-
-            });
-    }
+        this.loaded = true;
+      });
+  }
 }

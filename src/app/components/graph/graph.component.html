@@ -4,11 +4,14 @@
 
 <div class="col-md-6">
 
-  <canvas baseChart
-          [data]="lineChartData.data"
+  <pre></pre>
+
+  <canvas baseChart *ngIf="loaded"
+          [data]="lineChartData"
           [labels]="lineChartLabels"
           [options]="lineChartOptions"
           [chartType]="lineChartType"
           (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          (chartClick)="chartClicked($event)">
+  </canvas>
 </div>
