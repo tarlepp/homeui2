@@ -3,6 +3,6 @@
  */
 
 export class Temperature {
-    timestamp: number;
-    temperature: number;
+  timestamp: number;
+  temperature: number;
 }

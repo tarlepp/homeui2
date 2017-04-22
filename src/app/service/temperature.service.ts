@@ -4,9 +4,7 @@ import { TEMPERATURES } from '../mock-temperatures';
 
 @Injectable()
 export class TemperatureService {
-
   getTemperatures(): Promise<Temperature[]> {
     return Promise.resolve(TEMPERATURES);
   }
-
 }
